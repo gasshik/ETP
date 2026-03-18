@@ -119,6 +119,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#Media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 #Custom Auth System
 AUTH_USER_MODEL = "auth_system.CustomUser"
 LOGIN_URL = "auth_system:login"
