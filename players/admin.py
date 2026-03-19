@@ -5,7 +5,7 @@ from .models import Player, Team
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ("team_name", "logo", "team_country")
+    list_display = ("team_name", "logo", "team_country", "team_flag")
     search_fields = ("team_name", "team_country")
     list_filter = ("team_country",)
 
@@ -20,6 +20,7 @@ class PlayerAdmin(admin.ModelAdmin):
         "date_of_birth",
         "rating",
         "team",
+        "flag",
         "country",
     )
     search_fields = ("nickname", "first_name", "last_name")

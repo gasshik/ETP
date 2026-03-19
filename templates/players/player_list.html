@@ -1,11 +1,25 @@
-{% for player in players %}
-<p>{{ player.nickname }} - {{ player.team.team_name }}</p>
-{% if player.avatar %}
-<img src="{{ player.avatar.url }}" , width="100" />
-{% else %}
-<p>Фото відсутнє</p>
-{% endif %} {% if player.team.logo %}
-<img src="{{ player.team.logo.url }}" , width="50" />
-{% else %}
-<p>Фото відсутнє</p>
-{% endif %} {% endfor %}
+<h1>Players</h1>
+<div>
+  {% for player in players %}
+  <div class="player-card">
+    <div class="player-photo">
+      {% if player.avatar %}
+      <img src="{{player.avatar.url}}">
+      {% else %}
+        <p>Фото відсутнє</p>
+      {% endif %}
+    </div>
+    <div class="player-info">
+      <div class="name-row">
+        {% if player.flag %}
+          <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png">
+        {% else %}
+          <p>Прапор відсутній</p>
+        {% endif %}
+        <span>"{{player.nickname}}"</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
