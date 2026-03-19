@@ -1,0 +1,11 @@
+{% for player in players %}
+<p>{{ player.nickname }} - {{ player.team.team_name }}</p>
+{% if player.avatar %}
+<img src="{{ player.avatar.url }}" , width="100" />
+{% else %}
+<p>Фото відсутнє</p>
+{% endif %} {% if player.team.logo %}
+<img src="{{ player.team.logo.url }}" , width="50" />
+{% else %}
+<p>Фото відсутнє</p>
+{% endif %} {% endfor %}

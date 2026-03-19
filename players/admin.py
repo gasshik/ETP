@@ -14,6 +14,7 @@ class TeamAdmin(admin.ModelAdmin):
 class PlayerAdmin(admin.ModelAdmin):
     list_display = (
         "nickname",
+        "avatar",
         "first_name",
         "last_name",
         "date_of_birth",
