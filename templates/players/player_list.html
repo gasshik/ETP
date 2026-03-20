@@ -1,16 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="theme-controls">
+  <button type="button" id="theme-switcher" class="theme-btn">
+  <span class="icon">🌙</span></button>
+</div>
 <h1>Players</h1>
-<div>
+<div class="player-grid">
   {% for player in players %}
-  <div class="player-card">
+  <div class="player-card" style="--team-color: {{ player.team.color }};">
     <div class="player-photo">
       {% if player.avatar %}
       <img src="{{player.avatar.url}}">
       {% else %}
-        <p>Фото відсутнє</p>
+        <div class="avatar-placeholder">
+          <span>NO PHOTO</span>
+        </div>
       {% endif %}
     </div>
     <div class="player-info">
       <div class="name-row">
+        {% if player.team %}
+          <img src="{{ player.team.logo.url }}">
+        {% else  %}
+          <p>Немає команди</p>
+        {% endif %}
         {% if player.flag %}
           <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png">
         {% else %}
@@ -22,4 +35,4 @@
   </div>
   {% endfor %}
 </div>
-
+<script src="{% static "js/main.js" %}"></script>

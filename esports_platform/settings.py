@@ -120,6 +120,15 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+#Add Kosovo in django-counties
+COUNTRIES_OVERRIDE = {
+    'XK': 'Kosovo',
+}
+
 # Media
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"

@@ -6,6 +6,7 @@ class Team(models.Model):
     team_name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="teams/")
     team_flag = CountryField(blank_label="Оберіть країну", null=True, blank=True)
+    color = models.CharField(max_length=10, default="#ffffff")
     team_country = models.CharField(max_length=100)
 
     def __str__(self):

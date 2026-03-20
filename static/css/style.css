@@ -1,0 +1,126 @@
+:root {
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --main-accent: #d20000;
+  --text-color: #1c1e21;
+}
+
+  .dark-theme {
+    --bg-color: #0f1113;
+    --card-bg: #1a1d20;
+    --main-accent: #ff4b2b;
+    --text-color: #e9ecef;
+  }
+
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 { text-align: center; color: #ff0000; text-transform: uppercase; }
+
+  /* Сітка для карток */
+  .player-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* Карточка гравця */
+  .player-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    width: 200px;
+    overflow: hidden;
+    transition: transform 0.2s; /* Ефект при наведені */
+    border-bottom: 4px solid #25292e;
+  }
+
+  .player-card:hover {
+    transform: translateY(-8px); /* Карточка трохи піднімається */
+    border-bottom-color: var(--team-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 
+                0 0 10px var(--team-color);
+  }
+
+  /* Фото гравця */
+  .player-photo img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(180deg, #30353c 0%, #25292e 100%);
+  }
+
+  /* Інфо-блок */
+  .player-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .name-row img { width: 22px; height: auto; } /* Розмір прапору */
+  .nickname { font-weight: bold; font-size: 1.1em; color: #e74c3c; }
+
+  /* Лого команди */
+  .team-logo img {
+    width: 40px;
+    height: auto;
+    opacity: 0.8;
+  }
+  /* Заглушка для гравців без фото */
+  .avatar-placeholder {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(45deg, #2c3136, #1b1e21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a4f55;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.avatar-placeholder::before {
+    content: "👤"; 
+    font-size: 60px;
+    position: absolute;
+    opacity: 0.1;
+}
+.theme-btn {
+  width: 45px;
+  height: 45px;
+  display: flex; /* Важно для центрирования */
+  justify-content: center;
+  align-items: center;
+  
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0; /* Убрал внутренние отступы, чтобы не сплющило */
+}
+
+.theme-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--main-accent);
+}
+
+.theme-btn .icon {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  line-height: 1; /* Чтобы не было лишних отступов у шрифта */
+}
