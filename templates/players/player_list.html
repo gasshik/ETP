@@ -1,38 +1,55 @@
+{% extends "base.html" %} 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% block content %}
 <div class="theme-controls">
   <button type="button" id="theme-switcher" class="theme-btn">
-  <span class="icon">🌙</span></button>
+    <span class="icon">🌙</span>
+  </button>
 </div>
+
 <h1>Players</h1>
-<div class="player-grid">
+
+<div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 justify-content-center"> 
   {% for player in players %}
-  <div class="player-card" style="--team-color: {{ player.team.color }};">
-    <div class="player-photo">
-      {% if player.avatar %}
-      <img src="{{player.avatar.url}}">
-      {% else %}
-        <div class="avatar-placeholder">
-          <span>NO PHOTO</span>
+    <div class="col d-flex justify-content-center">
+      <div class="player-card" style="--team-color: {{ player.team.color }};">
+        <div class="player-photo">
+          {% if player.avatar %}
+            <img src="{{player.avatar.url}}">
+          {% else %}
+            <div class="avatar-placeholder">
+              <span>NO PHOTO</span>
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
-    </div>
-    <div class="player-info">
-      <div class="name-row">
-        {% if player.team %}
-          <img src="{{ player.team.logo.url }}">
-        {% else  %}
-          <p>Немає команди</p>
-        {% endif %}
-        {% if player.flag %}
-          <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png">
-        {% else %}
-          <p>Прапор відсутній</p>
-        {% endif %}
-        <span>"{{player.nickname}}"</span>
+
+        <div class="player-info">
+          <div class="main-info-row">
+            {% if player.team %}
+              <img src="{{ player.team.logo.url }}">
+            {% else %}
+              <p>Немає команди</p>
+            {% endif %}
+            <span class="nickname">{{ player.nickname }}</span>
+          </div>
+
+          <div class="player-country">
+            {% if player.flag %}
+              <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png" class="player-flag">
+              <span class="country">{{ player.country }}</span>
+            {% else %}
+              <p>Прапор відсутній</p>
+            {% endif %}
+          </div>
+
+          <div class="real-name-row">
+            {{ player.first_name }} {{ player.last_name }}
+          </div>
+        </div>
       </div>
+
     </div>
-  </div>
   {% endfor %}
 </div>
-<script src="{% static "js/main.js" %}"></script>
+{% endblock content %}

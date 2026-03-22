@@ -1,12 +1,14 @@
-<nav>
-  {% if user.is_authenticated %}
-  <p>Hello, {{ user.username }}</p>
-  <form action="{% url 'auth_system:logout' %}", method="post">
-    {% csrf_token %}
-    <input type="submit" value="Logout">
-  </form>
-  {% else %}
-  <a href="{% url 'auth_system:login' %}">Login</a>
-  <a href="{% url 'auth_system:register' %}">Register</a>
-  {% endif %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="#">Esports Tournament Platform</a>
+    
+    <div class="ms-auto text-white">
+      {% if user.is_authenticated %}
+        <span class="me-3">Привіт, <strong>{{ user.username }}</strong></span>
+        <a href="/logout" class="btn btn-outline-danger btn-sm">Вийти</a>
+      {% else %}
+        <a href="/login" class="btn btn-primary btn-sm">Війти</a>
+      {% endif %}
+    </div>
+  </div>
 </nav>
