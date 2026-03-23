@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{ player.avatar.url }}" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <h1>{{ player.nickname }}</h1>
+        <p>Age {{ player.date_of_birth }}</p>
+        <span>Team <img src="{{ player.team.logo.url }}"></span>
+        <p>country <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png"></p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
