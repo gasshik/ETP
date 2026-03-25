@@ -7,8 +7,12 @@
       </div>
       <div class="col-md-8">
         <h1>{{ player.nickname }}</h1>
-        <p>Age {{ player.date_of_birth }}</p>
-        <span>Team <img src="{{ player.team.logo.url }}"></span>
+        <p>Age {{ player.age }} years</p>
+        <p class="wight_text">
+          <span class="text-muted">Team</span>
+          <img src="{{ player.team.logo.url }}" width = "40" class="ms-2 me-1">
+          <strong>{{ player.team.team_name }}</strong>
+        </p>
         <p>country <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png"></p>
       </div>
     </div>
