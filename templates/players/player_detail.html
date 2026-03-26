@@ -1,15 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-  <div class="container">
-    <div class="row">
+  <div class="container mt-5">
+    <div class="row player-profile-box">
       <div class="col-md-4">
         <img src="{{ player.avatar.url }}" class="img-fluid">
       </div>
       <div class="col-md-8">
         <h1>{{ player.nickname }}</h1>
         <p>Age {{ player.age }} years</p>
-        <p class="wight_text">
-          <span class="text-muted">Team</span>
+        <p>
+          <span>Team</span>
           <img src="{{ player.team.logo.url }}" width = "40" class="ms-2 me-1">
           <strong>{{ player.team.team_name }}</strong>
         </p>
