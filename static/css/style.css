@@ -165,3 +165,8 @@ body {
     border-radius: 8px;
     object-fit: contain;
 }
+.form-select{
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
