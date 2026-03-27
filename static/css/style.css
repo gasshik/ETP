@@ -33,10 +33,12 @@ body {
   .player-card {
     background-color: var(--card-bg);
     border-radius: 8px;
-    width: 100%;
-    max-width: 220px;
+    width: 220px;
+    min-height: 350px;
     margin: auto;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.2s; /* Ефект при наведені */
     border-bottom: 4px solid #25292e;
   }
@@ -84,7 +86,8 @@ body {
   /* Заглушка для гравців без фото */
   .avatar-placeholder {
     width: 100%;
-    height: 250px;
+    height: 220px;
+    position: relative;
     background: linear-gradient(45deg, #2c3136, #1b1e21);
     display: flex;
     align-items: center;
@@ -152,10 +155,13 @@ body {
   border-radius: 2px;
   padding: 20px;
 }
-.col-md-4{
-  width: 250px;
-  height: 237px;
-  border-radius: 25px;
-  background: linear-gradient(180deg, #30353c 0%, #25292e 100%);
-  
+.card-link {
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+}
+.hltv-player-bg {
+    background: linear-gradient(180deg, #30353c 0%, #25292e 100%);
+    border-radius: 8px;
+    object-fit: contain;
 }

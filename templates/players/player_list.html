@@ -9,12 +9,13 @@
 <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 justify-content-center"> 
   {% for player in players %}
     <div class="col d-flex justify-content-center">
+      <a href="{% url "player_detail" player.id %}" class="card-link text-decoration-none d-inline-block">
       <div class="player-card" style="--team-color: {{ player.team.color }};">
         <div class="player-photo">
           {% if player.avatar %}
-            <img src="{{player.avatar.url}}">
+            <img src="{{player.avatar.url}}" class="hltv-player-bg" style="width: 100%; height: 220px;">
           {% else %}
-            <div class="avatar-placeholder">
+            <div class="avatar-placeholder hltv-player-bg">
               <span>NO PHOTO</span>
             </div>
           {% endif %}
@@ -44,7 +45,7 @@
           </div>
         </div>
       </div>
-
+      </a>
     </div>
   {% endfor %}
 </div>
