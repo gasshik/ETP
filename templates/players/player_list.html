@@ -2,12 +2,10 @@
 {% load static %}
 
 {% block content %}
-
-
-<h1>Players</h1>
+<h1 class="text-center my-4">Players</h1>
 
 <div class="container mb-4">
-    <form method="GET" action="" class="row g-2 justify-content-center">
+    <form method="GET" id="filter-form" class="row g-2 justify-content-center">
         <div class="col-auto">
             <select name="country" class="form-select border-0 shadow-sm" style="border-radius: 10px;">
                 <option value="All">Всі країни</option>
@@ -26,47 +24,29 @@
     </form>
 </div>
 
-<div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 justify-content-center"> 
-  {% for player in players %}
-    <div class="col d-flex justify-content-center">
-      <a href="{% url "player_detail" player.id %}" class="card-link text-decoration-none d-inline-block">
-      <div class="player-card" style="--team-color: {{ player.team.color }};">
-        <div class="player-photo">
-          {% if player.avatar %}
-            <img src="{{player.avatar.url}}" class="hltv-player-bg" style="width: 100%; height: 220px;">
-          {% else %}
-            <div class="avatar-placeholder hltv-player-bg">
-              <span>NO PHOTO</span>
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="player-info">
-          <div class="main-info-row">
-            {% if player.team %}
-              <img src="{{ player.team.logo.url }}">
-            {% else %}
-              <p>Немає команди</p>
-            {% endif %}
-            <span class="nickname">{{ player.nickname }}</span>
-          </div>
-
-          <div class="player-country">
-            {% if player.flag %}
-              <img src="https://flagcdn.com/w40/{{ player.flag.code|lower }}.png" class="player-flag">
-              <span class="country">{{ player.country }}</span>
-            {% else %}
-              <p>Прапор відсутній</p>
-            {% endif %}
-          </div>
-
-          <div class="real-name-row">
-            {{ player.first_name }} {{ player.last_name }}
-          </div>
-        </div>
-      </div>
-      </a>
-    </div>
-  {% endfor %}
+<div id="player-container" class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 justify-content-center"> 
+    {% include "players/_player_list.html" %}
 </div>
+
+<script>
+document.getElementById('filter-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Зупиняє звичайне перезавантаження сторінки
+
+    let form = this;
+    let url = form.action || window.location.href;
+    let formData = new URLSearchParams(new FormData(form)).toString();
+
+    // Відправляє AJAX запит
+    fetch(`${url}?${formData}`, {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('player-container').innerHTML = data.html;
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
 {% endblock content %}

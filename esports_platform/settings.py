@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "news",
     "auth_system",
     "players",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
@@ -124,9 +125,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-#Add Kosovo in django-counties
+# Add Kosovo in django-counties
 COUNTRIES_OVERRIDE = {
-    'XK': 'Kosovo',
+    "XK": "Kosovo",
 }
 
 # Media
