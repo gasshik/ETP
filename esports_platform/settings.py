@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-&cq4g1y2r5yv+v@65o$+t60$0-vu&ki*)9+ywx0i@)%2y&umdn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.8000", '127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "auth_system",
     "players",
     "dashboard",
+    "events",
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,15 @@ COUNTRIES_OVERRIDE = {
 # Media
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # Custom Auth System
 AUTH_USER_MODEL = "auth_system.CustomUser"

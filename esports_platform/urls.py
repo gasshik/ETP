@@ -18,9 +18,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from events.views import event_list
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include('events.urls')),
     path("", include("auth_system.urls")),
     path("players/", include("players.urls")),
     path("news/", include("news.urls")),
